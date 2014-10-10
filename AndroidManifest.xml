@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.aki.glass.contact"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="com.google.android.glass.permission.DEVELOPMENT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <application
+        android:name=".AppBean"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_timer"
+        android:label="@string/app_name" >
+        <activity
+            android:name=".MainActivity"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.google.android.glass.VoiceTrigger"
+                android:resource="@xml/voice_trigger" />
+        </activity>
+        <activity
+            android:name=".PreviousActivity"
+            android:label="@string/title_activity_previous" >
+        </activity>
+        <activity
+            android:name=".DetailScrollActivity"
+            android:label="@string/title_main_activity" >
+        </activity>
+        <activity
+            android:name=".ScanActivity"
+            android:label="@string/title_scan_activity" >
+        </activity>
+        <activity
+            android:name=".ScannerActivity"
+            android:label="@string/title_scan_activity" >
+        </activity>
+        <activity
+            android:name="com.dm.zbar.android.scanner.ZBarScannerActivity"
+            android:label="@string/title_scan_activity" >
+        </activity>
+
+        <service android:name=".BLEService" />
+
+        <receiver android:name=".StartDetailScrollActivityReceiver" >
+            <intent-filter>
+                <action android:name="com.aki.glass.contact.ViewAction.VIEW" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".LiveDataActivity"
+            android:label="@string/title_activity_live_data" >
+        </activity>
+        <service android:name=".BroadcastService" />
+    </application>
+
+    <!--
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_timer"
+        android:name="AppBean"
+        android:label="@string/app_name" >
+        <activity
+            android:name=".DetailScrollActivity"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.google.android.glass.VoiceTrigger"
+                android:resource="@xml/voice_trigger" />
+        </activity>
+        <activity
+            android:name=".PreviousActivity"
+            android:label="@string/title_activity_previous" >
+        </activity>
+        
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_main_activity" >
+        </activity>
+        
+    </application>    
+    -->
+
+</manifest>
